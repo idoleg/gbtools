@@ -18,7 +18,17 @@ class ActsController extends Controller
 
     public function showCreateForm()
     {
-        return view('acts.create');
+        return view('acts.edit', [
+            'id' => false,
+            'date' => (new \DateTime())->format('Y-m-d'),
+            'actId' => '',
+            'tetherName' => '',
+            'courseName' => '',
+            'from' => (new \DateTime())->format('Y-m-d'),
+            'to' => (new \DateTime())->modify('+10 days')->format('Y-m-d'),
+            'description' => '',
+            'sum' => 10000
+        ]);
     }
 
     public function create(Request $request)
@@ -41,6 +51,30 @@ class ActsController extends Controller
         $hash = ActsShare::where('act_id', $id->id)->first();
 
         return view('acts.view', ['id' => $id->id, 'act' => $id->data, 'hash' => $hash->hash]);
+    }
+
+    public function showEditForm(Request $request, Act $id)
+    {
+        return view('acts.edit', [
+            'id' => $id->id,
+            'date' => $id->data['date'],
+            'actId' => $id->data['act-id'],
+            'tetherName' => $id->data['tether-name'],
+            'courseName' => $id->data['course-name'],
+            'from' => $id->data['from'],
+            'to' => $id->data['to'],
+            'description' => $id->data['description'],
+            'sum' => $id->data['sum'] / 1.15,
+        ]);
+    }
+
+    public function edit(Request $request, Act $id)
+    {
+        $id->update([
+            'data' => $request->only(['date', 'act-id', 'tether-name', 'course-name', 'from', 'to', 'description', 'sum', 'sumrus'])
+            ]);
+
+        return redirect()->route('acts.view', ['id' => $id->id]);
     }
 
     public function print(Request $request, Act $id)

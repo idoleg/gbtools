@@ -18,7 +18,7 @@
     ]
   ];
 
-  var rusRubles = ['рубль', 'рубля', 'рублей'];
+  var rusRubles = ['российский рубль', 'российских рубля', 'российских рублей'];
 
   var belRubles = ['белорусский рубль', 'белорусских рубля', 'белорусских рублей'];
 
@@ -49,7 +49,7 @@
     return options[2];
   };
 
-  var parseNumber = function(number, count, currCode) {
+  var parseNumber = function(number, count, currCode, num) {
     var first;
     var second;
     var numeral = '';
@@ -76,7 +76,7 @@
         }
         case 'RU':
         default: {
-          numeral = numeral + plural(number, rusRubles);
+          numeral = numeral + '(' + num + ') ' + plural(number, rusRubles);
         }
       }
     } else if (count === 1) {
@@ -108,6 +108,8 @@
   };
 
   var rubles = function(number, currCode) {
+    var num = number;
+
     if (!number) {
       return false;
     }
@@ -150,7 +152,7 @@
       parts = digit + parts;
 
       if ((parts.length === 3 || length === 0) && !isNaN(toFloat(parts))) {
-        numeral = parseNumber(parts, count, currCode) + numeral;
+        numeral = parseNumber(parts, count, currCode, num) + numeral;
         parts = '';
         count++;
       }
@@ -160,9 +162,9 @@
 
     numeral = numeral.replace(/\s+/g, ' ');
 
-    if (decimals) {
-      numeral = numeral + parseDecimals(toFloat(decimals));
-    }
+    // if (decimals) {
+    //   numeral = numeral + parseDecimals(toFloat(decimals));
+    // }
 
     return numeral;
   };

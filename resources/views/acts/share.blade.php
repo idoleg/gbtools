@@ -10,7 +10,7 @@
 </head>
 <body class="body-container">
 <header>
-  Нажмитне ctr+P, уберите отображение колонтитулов и настройте поля
+  Нажмите ctr+P, уберите отображение колонтитулов и настройте поля
 </header>
 
 <divc class="paper-container">

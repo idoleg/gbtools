@@ -23,6 +23,9 @@
 
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/rubles.js') }}"></script>
+
+    <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -31,11 +34,9 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     GBTools
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <div class=" navbar" >
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 

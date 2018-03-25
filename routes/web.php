@@ -17,6 +17,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/acts/{id}', 'ActsController@view')->name('acts.view');
     Route::get('/acts/{id}/print', 'ActsController@print')->name('acts.print');
 
+    Route::get('/acts/{id}/edit', 'ActsController@showEditForm')->name('acts.edit');
+    Route::post('/acts/{id}/edit', 'ActsController@edit');
+
 });
 
 

@@ -10,7 +10,7 @@
 </head>
 <body class="body-container">
     <header>
-        <a href="{{route('acts.view', $id)}}">Назад</a><span>Нажмитне ctr+P, уберите отображение колонтитулов и настройте поля</span>
+        <a href="{{route('acts.view', $id)}}">Назад</a><span>Нажмите ctr+P, уберите отображение колонтитулов и настройте поля</span>
     </header>
 
     <divc class="paper-container">

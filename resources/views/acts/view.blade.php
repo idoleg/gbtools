@@ -21,7 +21,7 @@
                         onclick="prompt('','{{config('app.url')}}/share?hash={{$hash}}')"
                         role="button">Поделиться актом</button>
                 <a class="btn btn-outline-primary btn-sm"
-                        href="{{ route('acts.create') }}"
+                        href="{{ route('acts.edit', $id) }}"
                         role="button">Редактировать акт</a>
             </div>
 
@@ -32,8 +32,8 @@
                 @include('act')
 
 
-            </div>
-        </div>
+</div>
+    </div>
 
     </div>
 @endsection
